@@ -231,17 +231,25 @@ btn.addEventListener("click", () => {
 			}
 		}
 	} else {
-		const volWeight =
-			calculate(vLength, vWidth, vHeight) > actualWeight.value
-				? calculate(vLength, vWidth, vHeight)
-				: actualWeight.value;
+		if (actualWeight.value > 15 && mode === "p2p") {
+			showMessage(
+				`Maximum weight of 15kg for ${
+					Object.values(modesKeys)[Object.keys(modesKeys).indexOf(mode)]
+				} exceeded (${actualWeight.value}kg)`,
+			);
+		} else {
+			const volWeight =
+				calculate(vLength, vWidth, vHeight) > actualWeight.value
+					? calculate(vLength, vWidth, vHeight)
+					: actualWeight.value;
 
-		result.innerText = `${volWeight} kg`;
-		const rand =
-			calculate(vLength, vWidth, vHeight) > actualWeight.value
-				? prices(calculate(vLength, vWidth, vHeight), modifier)
-				: prices(volWeight, modifier);
-		price.innerText = `R ${rand},00`;
+			result.innerText = `${volWeight} kg`;
+			const rand =
+				calculate(vLength, vWidth, vHeight) > actualWeight.value
+					? prices(calculate(vLength, vWidth, vHeight), modifier)
+					: prices(volWeight, modifier);
+			price.innerText = `R ${rand},00`;
+		}
 	}
 });
 

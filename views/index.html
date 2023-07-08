@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link id="stylesheet" rel="stylesheet" href="../styles/style.css" />
+		<title>Volumetric Weight Calculator</title>
+	</head>
+	<body>
+		<nav>	
+			<img
+				src="https://logos-download.com/wp-content/uploads/2021/01/Postnet_Logo.png"
+				alt="Postnet Logo"
+			/>
+			<button class="generic-button" id="dark-mode-switcher" onclick="toggleDarkMode()"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg></button>
+				<span id="area-modifier-display" class="modifier-display enabled">Main</span>
+				<span id="delivery-modifier-display" class="modifier-display enabled">Overnight</span>
+			<span id="mode-switcher" onclick="showModesPanel()">
+				<img
+					src="https://onlineapp.postnet.co.za/Public/images/Icons/c2c.jpg"
+					alt="Postnet to Postnet"
+				/>
+				<!-- Postnet to Postnet -->
+			</span>
+		</nav>
+		<div class="overlay hidden" onclick="showOverlay()"></div>
+		<div class="mode-container hidden">
+
+			<div class="mode-panel "></div>
+			<div class="mode-switches hidden">
+				<div>
+					<span><button class="generic-button" id="main-area-toggle" onclick="changeAreaMod('Main')">Main</button></span>
+					<span><button class="generic-button" id="reg-area-toggle" onclick="changeAreaMod('Reg')">Regional</button></span>
+				</div>
+				<div>
+					<span><button class="generic-button" id="express-toggle" onclick="changeDelMod('Overnight')">Overnight</button></span>
+					<span><button class="generic-button" id="non-express-toggle" onclick="changeDelMod('Non Express')">Non Express</button></span>
+				</div>
+			</div>
+		</div>
+		<main>
+			<div class="inputs">
+				<label for="length"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="1em"
+						viewBox="0 0 512 512"
+					>
+						<path
+							d="M177.9 494.1c-18.7 18.7-49.1 18.7-67.9 0L17.9 401.9c-18.7-18.7-18.7-49.1 0-67.9l50.7-50.7 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 41.4-41.4 48 48c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6l-48-48 50.7-50.7c18.7-18.7 49.1-18.7 67.9 0l92.1 92.1c18.7 18.7 18.7 49.1 0 67.9L177.9 494.1z"
+						/></svg
+				></label>
+				<input
+					name="length"
+					type="number"
+					class="length"
+					placeholder="Length"
+					onfocus="changeBorder('.length')"
+					onblur="changeBorder('.length')"
+					autocomplete="off"
+				/>
+				&times;
+				<label for="width"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="1em"
+						viewBox="0 0 640 512"
+					>
+						<path
+							d="M0 336c0 26.5 21.5 48 48 48l544 0c26.5 0 48-21.5 48-48l0-160c0-26.5-21.5-48-48-48l-64 0 0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80-64 0 0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80-64 0 0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80-64 0 0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80-64 0 0 80c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-80-64 0c-26.5 0-48 21.5-48 48L0 336z"
+						/></svg
+				></label>
+				<input
+					name="width"
+					type="number"
+					class="width"
+					autocomplete="off"
+					placeholder="Width"
+					onfocus="changeBorder('.width')"
+					onblur="changeBorder('.width')"
+				/>
+				&times;
+				<label for="height"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="1em"
+						viewBox="0 0 256 512"
+					>
+						<path
+							d="M0 48C0 21.5 21.5 0 48 0H208c26.5 0 48 21.5 48 48V96H176c-8.8 0-16 7.2-16 16s7.2 16 16 16h80v64H176c-8.8 0-16 7.2-16 16s7.2 16 16 16h80v64H176c-8.8 0-16 7.2-16 16s7.2 16 16 16h80v64H176c-8.8 0-16 7.2-16 16s7.2 16 16 16h80v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48z"
+						/></svg
+				></label>
+				<input
+					name="height"
+					type="number"
+					autocomplete="off"
+					class="height"
+					placeholder="Height"
+					onfocus="changeBorder('.height')"
+					onblur="changeBorder('.height')"
+				/>
+			</div>
+			<div class="measured-weight">
+				<label for="weight"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="1em"
+						viewBox="0 0 512 512"
+					>
+						<path
+							d="M224 96a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm122.5 32c3.5-10 5.5-20.8 5.5-32c0-53-43-96-96-96s-96 43-96 96c0 11.2 1.9 22 5.5 32H120c-22 0-41.2 15-46.6 36.4l-72 288c-3.6 14.3-.4 29.5 8.7 41.2S33.2 512 48 512H464c14.8 0 28.7-6.8 37.8-18.5s12.3-26.8 8.7-41.2l-72-288C433.2 143 414 128 392 128H346.5z"
+						/></svg
+				></label>
+				<input
+					type="number"
+					autocomplete="off"
+					name="weight"
+					id="measured-weight"
+					placeholder="Optional"
+					onfocus="changeBorder('#measured-weight')"
+					onblur="changeBorder('#measured-weight')"
+				/>
+			</div>
+			<h1 class="result">0.0 kg</h1>
+
+			<button id="button">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					height="1em"
+					viewBox="0 0 384 512"
+				>
+					<path
+						d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM96 64H288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm32 160a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zM96 352a32 32 0 1 1 0-64 32 32 0 1 1 0 64zM64 416c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM192 256a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zm64-64a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zM288 448a32 32 0 1 1 0-64 32 32 0 1 1 0 64z"
+					/>
+				</svg>
+			</button>
+		</main>
+		<div class="prices">
+			<h1 class="price">R 0,00</h1>
+			<h3 class="mode">Postnet to Postnet</h3>
+		</div>
+		
+		
+		<footer>v2.3.1 © Daniel Kruger 2023</footer>
+		<script src="../index.js"></script>
+	</body>
+</html>

@@ -12,7 +12,7 @@ const price = document.querySelector(".price");
 const delta = 5000;
 const panel = document.querySelector(".mode-panel");
 const panelC = document.querySelector(".mode-container");
-const panelBtns = document.querySelector('.mode-switches')
+const panelBtns = document.querySelector(".mode-switches");
 const overlay = document.querySelector(".overlay");
 let mode = "p2p";
 
@@ -31,10 +31,8 @@ let ammountGot = 0;
 function showModesPanel() {
 	showOverlay();
 	getModes();
-	panelBtns.classList.remove('hidden');
+	panelBtns.classList.remove("hidden");
 }
-
-
 
 function showOverlay() {
 	overlay.classList.toggle("hidden");
@@ -43,7 +41,7 @@ function showOverlay() {
 
 function showMessage(message) {
 	ammountGot = 0;
-	panelBtns.classList.add('hidden')
+	panelBtns.classList.add("hidden");
 	showOverlay();
 	panel.innerHTML = `<div>
 	<h1>${message}</h1>
@@ -67,35 +65,34 @@ function getModes() {
 }
 
 // don't touch these yet
-let p1 = 'main'
-let p2 = 'exr'
-let modifier = mode + p1 + p2
+let p1 = "main";
+let p2 = "exr";
+let modifier = mode + p1 + p2;
 
 function changeAreaMod(mod) {
-	const modDisplay = document.querySelector("#area-modifier-display")
-	modDisplay.innerText = mod
-	const code = mod === "Main" ? "main" : "reg"
-	if (mod == "Reg"){
-		modDisplay.classList.add('disabled')
-	} else if(mod === "Main"){
-		modDisplay.classList.remove('disabled')
+	const modDisplay = document.querySelector("#area-modifier-display");
+	modDisplay.innerText = mod;
+	const code = mod === "Main" ? "main" : "reg";
+	if (mod == "Reg") {
+		modDisplay.classList.add("disabled");
+	} else if (mod === "Main") {
+		modDisplay.classList.remove("disabled");
 	}
-	p1 = code
-	modifier = mode + code + p2
-
+	p1 = code;
+	modifier = mode + code + p2;
 }
-function changeDelMod(mod){
-	const modDisplay = document.querySelector("#delivery-modifier-display")
-	modDisplay.innerText = mod
-	const code = mod === "Overnight" ? "exr" : "noExr"
+function changeDelMod(mod) {
+	const modDisplay = document.querySelector("#delivery-modifier-display");
+	modDisplay.innerText = mod;
+	const code = mod === "Overnight" ? "exr" : "noExr";
 
-	if (mod == "Non Express"){
-		modDisplay.classList.add('disabled')
-	} else if(mod === "Overnight"){
-		modDisplay.classList.remove('disabled')
+	if (mod == "Non Express") {
+		modDisplay.classList.add("disabled");
+	} else if (mod === "Overnight") {
+		modDisplay.classList.remove("disabled");
 	}
-	p2 = code
-	modifier = mode + p1 + code
+	p2 = code;
+	modifier = mode + p1 + code;
 }
 ////
 function changeMode(id) {
@@ -103,7 +100,7 @@ function changeMode(id) {
 	mode = id;
 	const modeIndex = modes.indexOf(id);
 	const modeDisplay = Object.values(modesKeys);
-	modifier = mode + p1 + p2
+	modifier = mode + p1 + p2;
 
 	if (
 		Object.keys(modeGraphics)[Object.keys(modeGraphics).indexOf(id)] === mode
@@ -120,8 +117,6 @@ function changeMode(id) {
 		return mode;
 	}
 }
-
-
 
 function addCost(basePrice, num1, num2, num3) {
 	// basePrice is the minimum price
@@ -140,10 +135,8 @@ function changeBorder(n) {
 	selected.classList.toggle("input-selected");
 }
 
-
-
-// p2dmainexr 
-// p2dmainnoExr 
+// p2dmainexr
+// p2dmainnoExr
 // p2dregexr
 // p2dregnoExr
 
@@ -208,8 +201,6 @@ const calculate = (num1, num2, num3) => {
 	return volWeight;
 };
 
-
-
 btn.addEventListener("click", () => {
 	let vLength = document.querySelector(".length").value;
 	let vWidth = document.querySelector(".width").value;
@@ -217,10 +208,9 @@ btn.addEventListener("click", () => {
 	let actualWeight = document.querySelector("#measured-weight");
 
 	if (!actualWeight.value) {
-		if(!vLength && !vWidth && !vHeight){
-			showMessage("Please enter measurements")
-		}
-		else if (!vLength) {
+		if (!vLength && !vWidth && !vHeight) {
+			showMessage("Please enter measurements");
+		} else if (!vLength) {
 			showMessage("Length is required");
 		} else if (!vWidth) {
 			showMessage("Width is required");
@@ -255,58 +245,68 @@ btn.addEventListener("click", () => {
 	}
 });
 
-const lightModeIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"/></svg>`
-const darkModeIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg>`
+const lightModeIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"/></svg>`;
+const darkModeIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg>`;
 let darkMode = false;
 
-function toggleDarkMode(){
+function toggleDarkMode() {
 	darkMode = true;
-	document.querySelector('#stylesheet').setAttribute("href", "../styles/darkmode.css");
-	document.querySelector('#dark-mode-switcher').setAttribute("onclick", "toggleLightMode()");
-	document.querySelector('#dark-mode-switcher').innerHTML = lightModeIcon;
-	console.log(`Dark mode ${darkMode}\nYou can also use F4 to toggle dark mode\nThis message will appear every time you toggle dark mode\nAlso why are you in the dev console?`)
+	document
+		.querySelector("#stylesheet")
+		.setAttribute("href", "styles/darkmode.css");
+	document
+		.querySelector("#dark-mode-switcher")
+		.setAttribute("onclick", "toggleLightMode()");
+	document.querySelector("#dark-mode-switcher").innerHTML = lightModeIcon;
+	console.log(
+		`Dark mode ${darkMode}\nYou can also use F4 to toggle dark mode\nThis message will appear every time you toggle dark mode\nAlso why are you in the dev console?`,
+	);
 }
-function toggleLightMode(){
+function toggleLightMode() {
 	darkMode = false;
-	document.querySelector('#stylesheet').setAttribute("href", "../styles/style.css");
-	document.querySelector('#dark-mode-switcher').setAttribute("onclick", "toggleDarkMode()");
-	document.querySelector('#dark-mode-switcher').innerHTML = darkModeIcon;
+	document
+		.querySelector("#stylesheet")
+		.setAttribute("href", "styles/style.css");
+	document
+		.querySelector("#dark-mode-switcher")
+		.setAttribute("onclick", "toggleDarkMode()");
+	document.querySelector("#dark-mode-switcher").innerHTML = darkModeIcon;
 }
 
-
-document.addEventListener('keyup', (event) => {
-	const code = event.code
-	// Alert the key name and key code on keydown
-	if(code === "F4"){
-		if(!darkMode){
-			toggleDarkMode()
-		} else {
-			toggleLightMode()
+document.addEventListener(
+	"keyup",
+	(event) => {
+		const code = event.code;
+		// Alert the key name and key code on keydown
+		if (code === "F4") {
+			if (!darkMode) {
+				toggleDarkMode();
+			} else {
+				toggleLightMode();
+			}
 		}
-	}
-}, false);
+	},
+	false,
+);
 
-
-
-function easterEgg(){
+function easterEgg() {
 	panel.innerHTML = `<div>
 	<h1>Don't Click On Random Buttons!</h1>
 	<button class='generic-button' onclick='showMessage()'> Sorry </button>
 	</div>`;
 }
-document.querySelector("footer").addEventListener("click", ()=>{
+document.querySelector("footer").addEventListener("click", () => {
 	ammountGot = 0;
 	showOverlay();
-	panelBtns.classList.add('hidden')
+	panelBtns.classList.add("hidden");
 	panel.innerHTML = `<div>
 	<button class='generic-button' onclick='easterEgg()'> Random Button </button>
 	</div>`;
-})
+});
 
-
-function toDoList(){
+function toDoList() {
 	console.log(
 		`You shouldn't be reading this, are you Daniel?\n\n1. add better mode display logic for p2p (dont let it show when p2p is mode)
-		`
-	)
+		`,
+	);
 }

@@ -1,25 +1,24 @@
-:root{
+:root {
 	--border-color: rgb(19, 19, 19);
 	--shadow: 0px 0px 10px rgb(29, 29, 29);
 	--background-color: rgb(73, 73, 73);
 	--blue-accent: rgb(55, 61, 68);
 	--red: rgb(185, 0, 0);
-	--red-glow: 0px 0px 10px  rgb(255, 0, 0);
+	--red-glow: 0px 0px 10px rgb(255, 0, 0);
 	--red-border: 1px solid rgb(255, 79, 79);
-    --red-border-color: rgb(255, 79, 79);
+	--red-border-color: rgb(255, 79, 79);
 	--red-accent: rgb(139, 0, 0);
-    --fill: rgb(255, 237, 224);
+	--fill: rgb(255, 237, 224);
 	--enabled: rgb(70, 255, 70);
 	--disabled: rgb(255, 70, 70);
 	--green-accent: rgb(0, 139, 0);
-	--green-glow: 0px 0px 10px  rgb(0, 255, 0);
+	--green-glow: 0px 0px 10px rgb(0, 255, 0);
 }
 
 * {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family: Manrope;
 	transition: all 100ms ease-out;
-    color: var(--fill);
+	color: var(--fill);
 }
 body {
 	width: 100%;
@@ -27,7 +26,7 @@ body {
 	margin: 0px;
 	height: 100%;
 	overflow: hidden;
-    background-color: var(--background-color);
+	background-color: var(--background-color);
 }
 main {
 	margin: auto;
@@ -37,7 +36,7 @@ main {
 	padding: 10px;
 	overflow: hidden;
 	box-shadow: var(--shadow);
-    fill: var(--fill);
+	fill: var(--fill);
 }
 
 input {
@@ -64,7 +63,7 @@ nav img {
 	height: 1em;
 }
 
-.prices{
+.prices {
 	border: 1px solid var(--border-color);
 	box-shadow: var(--shadow);
 	border-radius: 10px;
@@ -81,8 +80,9 @@ nav img {
 	font-size: 60px;
 }
 
-#button{
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+#button {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	height: 50px;
 	width: 100%;
 	border: 1px solid var(--red);
@@ -90,41 +90,41 @@ nav img {
 	font-size: 20px;
 	border-radius: 5px;
 }
-#button:hover{
+#button:hover {
 	border: var(--red-border);
 	box-shadow: var(--red-glow);
-    fill: var(--red-border-color); 
-    background-color: var(--red-accent);
+	fill: var(--red-border-color);
+	background-color: var(--red-accent);
 	cursor: pointer;
 }
 
-.input-selected{
+.input-selected {
 	border: var(--red-border);
 	box-shadow: var(--red-glow);
 	background-color: var(--red-accent);
 	outline: none;
 }
 
-.input-selected::-webkit-input-placeholder{
+.input-selected::-webkit-input-placeholder {
 	color: var(--red-border-color);
 }
 
-.input-selected::-moz-placeholder{
+.input-selected::-moz-placeholder {
 	color: var(--red-border-color);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+	-moz-appearance: textfield;
 }
 
-#mode-switcher{
+#mode-switcher {
 	position: sticky;
 	left: 100%;
 	display: flex;
@@ -136,36 +136,35 @@ input[type=number] {
 	height: 30px;
 	overflow: hidden;
 }
-#mode-switcher:hover{
+#mode-switcher:hover {
 	/* border: 1px solid var(--border-color);
 	box-shadow: var(--shadow); */
 	border: 1px solid rgb(163, 0, 0);
 	box-shadow: 0px 0px 25px rgb(163, 0, 0) inset;
 	cursor: pointer;
 }
-#mode-switcher:active{
+#mode-switcher:active {
 	border: var(--red-border);
 	box-shadow: var(--red-glow);
 	background-color: var(--red-accent);
 }
-#mode-switcher img{
+#mode-switcher img {
 	height: 100%;
 }
-
 
 footer {
 	font-size: 10px;
 	position: absolute;
 	bottom: 0;
 }
-.measured-weight{
+.measured-weight {
 	/* margin: auto; */
 	margin-top: 10px;
 	width: 100%;
 	height: fit-content;
 }
 
-.mode-container{
+.mode-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -175,14 +174,14 @@ footer {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	margin:auto;
+	margin: auto;
 	height: fit-content;
 	width: fit-content;
 }
 
-.mode-panel{
+.mode-panel {
 	font-size: 15px;
-	
+
 	width: fit-content;
 	height: fit-content;
 	padding: 10px;
@@ -196,7 +195,7 @@ footer {
 	gap: 10px;
 }
 
-.mode-switches{
+.mode-switches {
 	display: grid;
 	gap: 5px;
 	margin: auto;
@@ -207,12 +206,11 @@ footer {
 	background-color: var(--background-color);
 }
 
-.mode-switches button{
+.mode-switches button {
 	width: 100px;
 }
 
-
-.overlay{
+.overlay {
 	position: absolute;
 	bottom: -61px;
 	width: 100%;
@@ -221,8 +219,7 @@ footer {
 	backdrop-filter: blur(5px);
 }
 
-
-.mode-switcher{
+.mode-switcher {
 	font-weight: 400;
 	border: 1px solid var(--red);
 	background-color: var(--red);
@@ -233,16 +230,16 @@ footer {
 	background-color: var(--blue-accent);
 	text-align: start;
 }
-.mode-switcher:hover{
+.mode-switcher:hover {
 	border: 1px solid var(--border-color);
 	box-shadow: var(--shadow);
-    cursor: pointer;
+	cursor: pointer;
 }
-.mode-switcher:active{
+.mode-switcher:active {
 	border: var(--red-border);
 	box-shadow: var(--red-glow);
 	background-color: var(--red-accent);
-    color: var(--red-border-color);
+	color: var(--red-border-color);
 }
 
 .generic-button {
@@ -257,64 +254,65 @@ footer {
 	text-align: start;
 	padding: 10px;
 	fill: var(--fill);
-
 }
 
-.generic-button:hover{
+.generic-button:hover {
 	border: 1px solid var(--border-color);
 	box-shadow: var(--shadow);
-    cursor: pointer;
+	cursor: pointer;
 }
 
-.generic-button:active{
+.generic-button:active {
 	fill: var(--red-border-color);
 	border: var(--red-border);
 	box-shadow: var(--red-glow);
 	background-color: var(--red-accent);
-    color: var(--red-border-color);
+	color: var(--red-border-color);
 }
 
-.result{
+.result {
 	text-align: center;
 }
 
-#dark-mode-switcher{
-    margin-left: auto ;
+#dark-mode-switcher {
+	margin-left: auto;
 	margin-right: 5px;
-    height: 30px;
-    width: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50px;
 }
 
-footer{
+footer {
 	user-select: none;
 }
 
-.modifier-display{
+.modifier-display {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: fit-content;
-	padding: 5px;
+	padding: 5px 10px;
 	border-radius: 5px;
 	border: 1px solid var(--border-color);
 	background-color: var(--blue-accent);
 	margin-right: 10px;
 }
-.enabled{
-  border:1px solid var(--enabled);
-  background-color: var(--green-accent);
-  box-shadow: var(--green-glow);
+.enabled {
+	border: 2px solid var(--enabled);
+	background-color: var(--green-accent);
+	box-shadow: var(--green-glow);
+	border-radius: 50px;
 }
-.disabled{
-	border: 1px solid var(--disabled);
+.disabled {
+	border: 2px solid var(--disabled);
 	background-color: var(--red-accent);
 	box-shadow: var(--red-glow);
+	border-radius: 50px;
 }
 
-.hidden{
+.hidden {
 	display: none;
 }

@@ -26,7 +26,7 @@ const modeGraphics = {
 	p2d: "https://onlineapp.postnet.co.za/Public/images/Icons/c2d.jpg",
 };
 
-let ammountGot = 0;
+let amountGot = 0;
 
 function showModesPanel() {
 	showOverlay();
@@ -40,7 +40,7 @@ function showOverlay() {
 }
 
 function showMessage(message) {
-	ammountGot = 0;
+	amountGot = 0;
 	panelBtns.classList.add("hidden");
 	showOverlay();
 	panel.innerHTML = `<div>
@@ -53,22 +53,22 @@ function getModes() {
 	const modePanel = document.querySelector(".mode-panel");
 	const modes = Object.keys(modesKeys);
 	const modeValues = Object.values(modesKeys);
-	if (ammountGot < 1) {
+	if (amountGot < 1) {
 		modePanel.innerHTML = "";
 		for (let i = 0; i < modes.length; i++) {
 			modePanel.innerHTML += `<div>
 			<button class='mode-switcher' ondblclick='showOverlay()' onclick="changeMode('${modes[i]}')" id="${modes[i]}"> ${modeValues[i]} </button>
 			</div>`;
 		}
-		ammountGot = 1;
+		amountGot = 1;
 	}
 }
 
-// don't touch these yet
+// don't touch these yet /////
 let p1 = "main";
 let p2 = "exr";
 let modifier = mode + p1 + p2;
-
+//////////////////////////////
 function changeAreaMod(mod) {
 	const modDisplay = document.querySelector("#area-modifier-display");
 	modDisplay.innerText = mod;
@@ -101,20 +101,30 @@ function changeMode(id) {
 	const modeIndex = modes.indexOf(id);
 	const modeDisplay = Object.values(modesKeys);
 	modifier = mode + p1 + p2;
+	const x = document.querySelectorAll(".modifier-display");
+
+	switch (id) {
+		case "p2p":
+			x[0].classList.add("hidden");
+			x[1].classList.add("hidden");
+			break;
+		case "p2d":
+			x[0].classList.remove("hidden");
+			x[1].classList.remove("hidden");
+	}
 
 	if (
 		Object.keys(modeGraphics)[Object.keys(modeGraphics).indexOf(id)] === mode
 	) {
 		document.querySelector("#mode-switcher").innerHTML = `<img src=${
 			Object.values(modeGraphics)[Object.keys(modeGraphics).indexOf(id)]
-		} alt='Postnet to Postnet'/>`;
+		} alt='PostNet to PostNet'/>`;
 		document.querySelector(".mode").innerText = modeDisplay[modeIndex];
 	} else {
 		document.querySelector(".mode").innerText = modeDisplay[modeIndex];
 		document.querySelector("#mode-switcher").innerHTML = `<img src=${
 			Object.values(modeGraphics)[1]
-		} alt='Postnet to Door'/>`;
-		return mode;
+		} alt='PostNet to Door'/>`;
 	}
 }
 
@@ -122,7 +132,7 @@ function addCost(basePrice, num1, num2, num3) {
 	// basePrice is the minimum price
 	// num 1 is the weight measured
 	// num 2 is the maximum weight for the basePrice
-	// num 3 is the ammount that basePrice should increase for every kg after num 2
+	// num 3 is the amount that basePrice should increase for every kg after num 2
 
 	const extraKg = num1 - num2;
 	const extraCost = num3 * Math.ceil(extraKg);
@@ -283,9 +293,8 @@ function toggleLightMode() {
 
 document.addEventListener(
 	"keyup",
-	(event) => {
-		const code = event.code;
-		// Alert the key name and key code on keydown
+	(e) => {
+		const code = e.code;
 		if (code === "F4") {
 			if (!darkMode) {
 				toggleDarkMode();
@@ -297,6 +306,7 @@ document.addEventListener(
 	false,
 );
 
+// haha you found my easter egg. Shhhhhh! o_o
 function easterEgg() {
 	panel.innerHTML = `<div>
 	<h1>Don't Click On Random Buttons!</h1>
@@ -304,17 +314,10 @@ function easterEgg() {
 	</div>`;
 }
 document.querySelector("footer").addEventListener("click", () => {
-	ammountGot = 0;
+	amountGot = 0;
 	showOverlay();
 	panelBtns.classList.add("hidden");
 	panel.innerHTML = `<div>
 	<button class='generic-button' onclick='easterEgg()'> Random Button </button>
 	</div>`;
 });
-
-function toDoList() {
-	console.log(
-		`You shouldn't be reading this, are you Daniel?\n\n1. add better mode display logic for p2p (dont let it show when p2p is mode)
-		`,
-	);
-}
